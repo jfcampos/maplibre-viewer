@@ -1,5 +1,20 @@
-# Vue 3 + TypeScript + Vite
+# maplibre-viewer
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Map viewer for Málaga open-data GeoJSON layers, built with Vue 3, Vuetify, Pinia and MapLibre GL (via `@indoorequal/vue-maplibre-gl`).
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Setup
+
+```sh
+pnpm install
+cp .env.example .env   # set your MapTiler key in VITE_MAP_URL
+pnpm dev
+```
+
+| Variable | Description |
+|---|---|
+| `VITE_MAP_URL` | MapLibre style URL |
+| `VITE_INIT_LONG_LAT` | Initial map center as `lon,lat` |
+
+## Layers
+
+Layers are defined in `src/stores/layers.ts`. Each one points to a GeoJSON file in `public/` (`srcFile`), which must use EPSG:4326 (lon/lat) coordinates. The sidebar toggles each layer, and clicking a point shows all of its properties in a popup.
